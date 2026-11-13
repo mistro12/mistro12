@@ -74,7 +74,7 @@ Online ordering for a Filipino–West African fusion restaurant, with a customer
   <img src="images/masarap-dish.jpg" width="180" alt="masarap dish">
 </p>
 
-🔗 [masarapcafe.com](https://masarapcafe.com/)
+📱 **Live on** [App Store](https://apps.apple.com/us/app/masarap-cafe/id6786804576) · [Google Play](https://play.google.com/store/apps/details?id=com.masarapcafe.app) · 🔗 [masarapcafe.com](https://masarapcafe.com/)
 
 ---
 
@@ -94,7 +94,7 @@ Connects Ghanaian farmers, buyers and transporters for direct trade and logistic
   <img src="images/brafie-product.jpg" width="180" alt="brafie product">
 </p>
 
-🔗 [brafie.com](https://www.brafie.com/)
+📱 **Live on** [App Store](https://apps.apple.com/us/app/brafie/id6759975438) · [Google Play](https://play.google.com/store/apps/details?id=com.brafie.app) · 🔗 [brafie.com](https://www.brafie.com/)
 
 ---
 
