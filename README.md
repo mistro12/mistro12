@@ -1,113 +1,140 @@
 # Hi, I'm Felix Agyei 👋
 
-Full-stack developer building production mobile and web apps with **React Native (Expo)**, **Next.js**, **Node.js**, **PostgreSQL / Supabase** and **MongoDB**. I like shipping real products end to end: data model, API, mobile app, release pipeline and monitoring.
+**Data Engineering & Analytics professional with 10+ years of experience** designing ETL/ELT pipelines, data warehouses and business intelligence systems that turn complex data into decisions. I work mostly in **Python, SQL, Azure Data Factory, SSIS and Power BI**.
+
+I also build AI-powered and full-stack applications: data platforms, marketplaces and mobile apps, **two of them live on the App Store and Google Play**.
 
 📍 Canyon Country, CA · 💼 [LinkedIn](https://www.linkedin.com/in/felix-agyei-dit-8210b078) · ✉️ [felix.agyeio4@gmail.com](mailto:felix.agyeio4@gmail.com)
 
-> Most of my code lives in private repositories. **I'm happy to give read access to any project below on request.**
+🎯 **Open to:** Data Engineering · Analytics Engineering · AI-enabled data platforms · Automation · Modern data architecture
+
+---
+
+## What I do
+
+- **Data engineering:** ETL/ELT pipelines with Azure Data Factory, SSIS and Python; troubleshooting failed pipelines and tuning slow ones
+- **Data modeling & warehousing:** dimensional models, data warehouses, and the SQL behind them
+- **Business intelligence:** Power BI dashboards and reporting systems that people use to make decisions
+- **Data quality & governance:** validation, lineage and reconciliation, so the numbers can be trusted
+- **AI & automation:** LLMs, the OpenAI API, AI agents, and workflow automation with n8n and Power Automate
+- **Software engineering:** REST APIs and full-stack web and mobile applications in production
 
 ---
 
 ## Projects
 
-### 🛡️ Manbii: civic reporting app for Ghana
-Citizens report broken infrastructure, safety, sanitation and utility issues on a live neighbourhood map, and get push alerts for problems near home or in areas they watch.
+> Most of my code lives in private repositories. **I'm happy to give read access to any project below on request.**
 
-**Stack:** Expo / React Native · Supabase (Postgres + PostGIS, Auth, Storage, Edge Functions) · MapLibre · Sentry
+### 🏫 Attendance Auditor: data-quality audit pipeline for school attendance
+Extracts historical attendance records from PowerSchool, runs them through a rules engine that flags likely errors with explainable confidence scores, and gives reviewers an evidence-first workflow to approve fixes and export them.
+
+**Stack:** TypeScript · PostgreSQL · Redis / BullMQ · Next.js · Docker · OIDC
+
 **Highlights:**
-- Geospatial queries with PostGIS and map clustering for dense report areas
-- Offline-first reporting: reports queue on the device and sync when the connection returns
-- Security-first backend: row-level security with automated RLS tests, a written threat model, and secret scanning of the app bundle in CI
-- Release tooling: schema-drift checks, bundle-size budgets and production-readiness checks before each release
-
-<p>
-  <img src="images/manbii-welcome.jpg" width="180" alt="manbii welcome">
-  <img src="images/manbii-categories.jpg" width="180" alt="manbii categories">
-  <img src="images/manbii-report.jpg" width="180" alt="manbii report">
-  <img src="images/manbii-emergency.jpg" width="180" alt="manbii emergency">
-</p>
-
-🔗 [Demo video](https://www.youtube.com/shorts/c240ZK2imUg)
+- **Extraction:** PowerSchool OAuth extraction with retries, run in time windows by a resumable background worker
+- **Data quality:** 12 canonical audit rules (AT-001 to AT-012) with transparent confidence scoring
+- **Lineage & integrity:** immutable source snapshots with completeness checks and manifest hashes; every finding links back to its evidence; review history is append-only
+- **Reconciliation:** after a fix, the system re-reads the source records and marks each finding verified, unresolved or changed at source
+- **Governed output:** checksummed CSV exports of approved findings, school-scoped access control, and fail-closed defaults
 
 ---
 
 ### 🍲 GhCater: catering marketplace for Ghana
 Connects customers with caterers for everything from corporate meal programs to weddings, funerals and birthday parties. Customers order from a menu or request quotes from up to five caterers, pay online, and track their order to delivery.
 
-**Stack:** TypeScript · Fastify · Next.js 16 · PostgreSQL · Paystack · pnpm/Turborepo
+**Stack:** TypeScript · Fastify · PostgreSQL · Next.js 16 · Paystack · pnpm/Turborepo
+
 **Highlights:**
-- Full marketplace flow: search, ordering, quote requests, deposits and balances, cancellations and refunds
-- Money handled properly: Paystack payments and webhooks, a double-entry ledger, escrow until the order completes, weekly caterer payouts net of commission, and daily reconciliation against Paystack
-- Corporate accounts with cost centers, PO numbers, approval limits and recurring weekly meal programs
-- Caterer portal, an admin console behind roles and two-factor auth, caterer document verification, and malware scanning of every upload
+- **Financial data done properly:** a double-entry ledger, escrow until the order completes, weekly caterer payouts net of commission, and daily reconciliation against Paystack
+- **Corporate accounts:** cost centers, PO numbers, approval limits and recurring weekly meal programs
+- **Operations analytics:** marketplace metrics for staff, error reporting, scheduled checks of the books, and a runbook for every alert
+- **Full marketplace flow:** search ranked by caterer performance, ordering, quotes, deposits, cancellations and refunds
 - Designed through 28 architecture decision records, with an OpenAPI contract that tests keep in sync with the code
 
 *Phase 1 in active development.*
 
 ---
 
-### 🎉 Yedede: social platform for celebrating "firsts"
-A video-first social app where people share and celebrate first-time experiences.
+### 🛡️ Manbii: civic reporting app for Ghana
+Citizens report broken infrastructure, safety, sanitation and utility issues on a live neighbourhood map, and get push alerts for problems near home or in areas they watch. Emergencies are routed to the right government agency.
 
-**Stack:** Next.js 14 · Expo / React Native · Supabase + Prisma · Cloudflare Stream & R2 · Upstash Redis · Node worker · PostHog · Sentry
+**Stack:** Expo / React Native · PostgreSQL + PostGIS · Supabase (Auth, Storage, Edge Functions) · MapLibre · Sentry
+
 **Highlights:**
-- Turborepo monorepo sharing types and validation across web, mobile and a background worker
-- Video upload, transcoding and HLS playback via Cloudflare Stream
-- AI-generated background music (MusicGen via Replicate)
-- Redis-backed rate limiting; background jobs run on a separate worker service
-
----
-
-### 🍽️ Masarap Cafe: restaurant ordering platform
-Online ordering for a Filipino–West African fusion restaurant, with a customer web app, a mobile app and a shared API.
-
-**Stack:** Next.js 15 · Expo / React Native · Node.js / Express · MongoDB (Mongoose) · Stripe · Docker
-**Highlights:**
-- pnpm/Turborepo monorepo with the web app, mobile app and API sharing one package of types
-- Stripe checkout and order flow
-- Documented secret-rotation process with a CI audit workflow
+- **Geospatial data:** PostGIS queries for nearby reports and watch zones, with map clustering for dense areas
+- **Data security:** row-level security with automated tests, a written threat model, and secret scanning in CI
+- **Database discipline:** forward-only migrations with automated schema-drift checks before each release
+- **Offline-first:** reports queue on the device and sync when the connection returns
 
 <p>
-  <img src="images/masarap-home.jpg" width="180" alt="masarap home">
-  <img src="images/masarap-breakfast.jpg" width="180" alt="masarap breakfast">
-  <img src="images/masarap-royale.jpg" width="180" alt="masarap royale">
-  <img src="images/masarap-dish.jpg" width="180" alt="masarap dish">
+  <img src="images/manbii-welcome.jpg" width="180" alt="Manbii welcome screen">
+  <img src="images/manbii-categories.jpg" width="180" alt="Manbii report categories">
+  <img src="images/manbii-report.jpg" width="180" alt="Manbii report details">
+  <img src="images/manbii-emergency.jpg" width="180" alt="Manbii emergency routing">
 </p>
 
-📱 **Live on** [App Store](https://apps.apple.com/us/app/masarap-cafe/id6786804576) · [Google Play](https://play.google.com/store/apps/details?id=com.masarapcafe.app) · 🔗 [masarapcafe.com](https://masarapcafe.com/)
+🔗 [Demo video](https://www.youtube.com/shorts/c240ZK2imUg)
 
 ---
 
 ### 🌱 Brafie: agricultural marketplace *(formerly AgriLink GH)*
 Connects Ghanaian farmers, buyers and transporters for direct trade and logistics.
 
-**Stack:** React · Node.js / Express · MongoDB · Firebase Auth · Cloudinary
+**Stack:** React / React Native · Node.js / Express · MongoDB · Firebase Auth · Cloudinary
+
 **Highlights:**
-- Three user roles (farmer, buyer, transporter), each with its own dashboard
-- Escrow payments with Mobile Money integration
+- Farmer dashboard with listings, views, ratings and a live weather forecast
+- Inventory management with stock levels, low-stock alerts and total stock value
+- Three user roles (farmer, buyer, transporter); escrow payments with Mobile Money
 - Real-time messaging, notifications, market prices and dispute resolution
 
 <p>
-  <img src="images/brafie-home.jpg" width="180" alt="brafie home">
-  <img src="images/brafie-dashboard.jpg" width="180" alt="brafie dashboard">
-  <img src="images/brafie-inventory.jpg" width="180" alt="brafie inventory">
-  <img src="images/brafie-product.jpg" width="180" alt="brafie product">
+  <img src="images/brafie-home.jpg" width="180" alt="Brafie marketplace home">
+  <img src="images/brafie-dashboard.jpg" width="180" alt="Brafie farmer dashboard">
+  <img src="images/brafie-inventory.jpg" width="180" alt="Brafie inventory manager">
+  <img src="images/brafie-product.jpg" width="180" alt="Brafie product editor">
 </p>
 
 📱 **Live on** [App Store](https://apps.apple.com/us/app/brafie/id6759975438) · [Google Play](https://play.google.com/store/apps/details?id=com.brafie.app) · 🔗 [brafie.com](https://www.brafie.com/)
 
 ---
 
-### 🏫 Attendance Auditor: school attendance audit tool
-Audits historical attendance records from PowerSchool, flags likely errors with transparent confidence scores, and supports human review and controlled export.
+### 🍽️ Masarap Cafe: restaurant ordering platform
+Online ordering for a Filipino–West African fusion restaurant, with a customer web app, a mobile app and a shared API.
 
-**Stack:** Next.js · TypeScript · Docker · Auth0
+**Stack:** Next.js 15 · Expo / React Native · Node.js / Express · MongoDB · Stripe · Docker
+
 **Highlights:**
-- Rule-based detection engine (12 rules) with explainable confidence scores
-- Read-only and fail-closed by design: audit runs are immutable and every finding links to its evidence
-- Reconciliation pass re-reads source records to confirm each fix landed
+- Monorepo with the web app, mobile app and API sharing one package of types
+- Stripe checkout and order flow
+- Documented secret-rotation process with a CI audit workflow
+
+<p>
+  <img src="images/masarap-home.jpg" width="180" alt="Masarap Cafe home">
+  <img src="images/masarap-breakfast.jpg" width="180" alt="Masarap Cafe breakfast menu">
+  <img src="images/masarap-royale.jpg" width="180" alt="Masarap Cafe signature menu">
+  <img src="images/masarap-dish.jpg" width="180" alt="Masarap Cafe dish detail">
+</p>
+
+📱 **Live on** [App Store](https://apps.apple.com/us/app/masarap-cafe/id6786804576) · [Google Play](https://play.google.com/store/apps/details?id=com.masarapcafe.app) · 🔗 [masarapcafe.com](https://masarapcafe.com/)
+
+---
+
+### 🎉 Yedede: social platform for celebrating "firsts"
+A video-first social app where people share and celebrate first-time experiences.
+
+**Stack:** Next.js 14 · Expo / React Native · PostgreSQL + Prisma · Cloudflare Stream & R2 · Upstash Redis · PostHog
+
+**Highlights:**
+- Video upload, transcoding and HLS playback via Cloudflare Stream
+- AI-generated background music (MusicGen via Replicate)
+- Background job worker, Redis-backed rate limiting, and product analytics with PostHog
 
 ---
 
 ## Tech I use
-**Mobile:** React Native, Expo, EAS · **Web:** Next.js, React, Tailwind · **Backend:** Node.js, Express, Supabase Edge Functions · **Data:** PostgreSQL, PostGIS, Prisma, MongoDB, Redis · **Infra:** Vercel, Render, Docker, Cloudflare · **Quality:** Jest, TypeScript, ESLint, Sentry, GitHub Actions
+
+**Data:** Python · SQL · Azure Data Factory · SSIS · Power BI · Data warehousing · Dimensional modeling · PostgreSQL · PostGIS · MongoDB · Redis  
+**AI & automation:** OpenAI API · LLMs · AI agents · n8n · Power Automate  
+**Software:** TypeScript · Node.js · Fastify · Next.js · React Native / Expo · REST APIs  
+**Cloud & ops:** Azure · Docker · Vercel · Render · Cloudflare · GitHub Actions · Sentry
